@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+    <h1>Загрузите логотип</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file><br><br>
+      <input type=submit value=Подтвердить>
+    </form>
+{% endblock %}

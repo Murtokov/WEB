@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+
+<h2 align="center">Курсовые работы:</h2>
+<p align="justify">
+    <a href="directions" class="btn btn-secondary">Посмотреть направления</a>
+    {% if current_user.is_authenticated and current_user.is_teacher == 1 or current_user.id == 1 %}
+    <a href="add_coursework" class="btn btn-secondary">Добавить курсовую</a>
+    <a href="add_direction" class="btn btn-secondary">Добавить направление</a></p>
+    {% endif %}
+{% for coursework in courseworks %}
+    <h3>Action # {{ coursework.id }}</h3>
+    <div class="table_container">
+        <table class="my_table">
+            <tr class="my_row">
+                <td class="title" width="400px" bgcolor="#dddddd">Логотип</td>
+                <td class="title" width="400px" bgcolor="#dddddd">Название курсовой</td>
+                <td class="title" width="150px" bgcolor="#dddddd">Глава</td>
+                <td class="title" width="100px" bgcolor="#dddddd" align="center">Описание</td>
+                <td class="title" width="100px" bgcolor="#dddddd" align="center">Количество листов</td>
+                <td class="title" width="200px" bgcolor="#dddddd" align="center">Ученики</td>
+                <td class="title" width="200px" bgcolor="#dddddd" align="center">Направление</td>
+                <td class="title" width="200px" bgcolor="#dddddd" align="center">Дедлайн</td>
+                <td class="title" width="100px" bgcolor="#dddddd" align="center">Завершена?</td>
+            </tr>
+            <tr class="my_row">
+                <td class="ordinary" bgcolor="#eeeeff"><img src="../static/img/{{coursework.file}}" style="height:100px"></td>
+                <td class="ordinary" bgcolor="#eeeeff">{{ coursework.title }}</td>
+                <td class="ordinary" bgcolor="#eeeeff">{{ names[coursework.leader][0] }} {{ names[coursework.leader][1] }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ coursework.coursework }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ coursework.coursework_sheets }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ coursework.students }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ coursework.direction }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ deadlines[coursework.id] }}</td>
+                {% if coursework.is_finished %}
+                <td class="ordinary" bgcolor="#eeffee" align="center">Завершена</td>
+                {% else %}
+                <td class="ordinary" bgcolor="#ffeeff" align="center">Не завершена</td>
+                {% endif %}
+            </tr>
+
+        </table>
+    </div>
+    <br>
+    {% if current_user.is_authenticated and current_user.is_teacher == 1 or current_user.id == 1  %}
+    <div>
+        <a href="/coursework_edit/{{ coursework.id }}" class="btn btn-warning">Изменить курсовую</a>
+        <a href="/upload/{{coursework.id }}" class="btn btn-warning">Добавить логотип</a>
+        <a href="/coursework_delete/{{coursework.id }}" class="btn btn-danger">Удалить курсовую</a>
+    </div>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление курсовой работы</h1>
+
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.csrf_token }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.leader.label }}<br>
+        {{ form.leader(class="form-control", min="1", max=ids) }}<br>
+        {% for error in form.leader.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.coursework.label }}<br>
+        {{ form.coursework(class="form-control") }}<br>
+        {% for error in form.coursework.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.coursework_sheets.label }}<br>
+        {{ form.coursework_sheets(class="form-control", min="1") }}<br>
+        {% for error in form.coursework_sheets.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.students.label }}<br>
+        {{ form.students(class="form-control") }}<br>
+        {% for error in form.students.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.deadline.label }}<br>
+        {{ form.deadline(class="form-control") }}<br>
+        {% for error in form.deadline.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.direction.label }}<br>
+        {{ form.direction(class="form-control", min="1", max=dirs) }}<br>
+        {% for error in form.direction.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+            {{ form.is_finished.label }}<br>
+                <input type="radio" id="True"
+                    name="is_finished" value="True" checked>
+                <label for="True">Да</label>
+
+                <input type="radio" id="False"
+                    name="is_finished" value="False">
+                <label for="False">Нет</label><br>
+    </p>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% endblock %}

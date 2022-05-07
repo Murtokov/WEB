@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="UTF-8">
+
+<h2 align="center">Направления:</h2>
+<p align="justify">
+    <a href="base" class="btn btn-secondary">Посмотреть курсовые</a>
+    {% if current_user.is_authenticated and current_user.is_teacher == 1 or current_user.id == 1 %}
+    <a href="add_coursework" class="btn btn-secondary">Добавить курсовую</a>
+    <a href="add_direction" class="btn btn-secondary">Добавить направление</a></p>
+    {% endif %}
+{% for direction in directions %}
+    <h3>Action # {{ direction.id }}</h3>
+    <div class="table_container">
+        <table class="my_table">
+            <tr class="my_row">
+                <td class="title" width="400px" bgcolor="#dddddd">ID</td>
+                <td class="title" width="400px" bgcolor="#dddddd">Название направления</td>
+                <td class="title" width="150px" bgcolor="#dddddd">Учитель</td>
+                <td class="title" width="100px" bgcolor="#dddddd" align="center">Ученики</td>
+                <td class="title" width="100px" bgcolor="#dddddd" align="center">Контакты</td>
+            </tr>
+            <tr class="my_row">
+                <td class="ordinary" bgcolor="#eeeeff">{{ direction.id }}</td>
+                <td class="ordinary" bgcolor="#eeeeff">{{ direction.title }}</td>
+                <td class="ordinary" bgcolor="#eeeeff">{{ names[direction.teacher][0] }} {{ names[direction.teacher][1] }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ direction.students }}</td>
+                <td class="ordinary" bgcolor="#eeeeff" align="center">{{ direction.email }}</td>
+            </tr>
+
+        </table>
+    </div>
+    <br>
+    {% if current_user.is_authenticated and current_user.is_teacher == 1 or current_user.id == 1  %}
+    <div>
+        <a href="/direction_edit/{{ direction.id }}" class="btn btn-warning">Изменить направление</a>
+        <a href="/direction_delete/{{direction.id }}" class="btn btn-danger">Удалить направление</a>
+    </div>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
