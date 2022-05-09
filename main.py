@@ -23,7 +23,7 @@ api_key = "40d1649f-0493-4b70-98ba-98533de7710b"
 login_manager = LoginManager()
 login_manager.init_app(app)
 db_session.global_init("db/kursovik.sqlite")
-app.config['UPLOAD_FOLDER'] = r'F:\Users\User\PycharmProjects\YAL2_\WEB_project\static\img'
+app.config['UPLOAD_FOLDER'] = r'F:\Users\User\PycharmProjects\HTML\static\img'
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024 * 10
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -313,8 +313,7 @@ def direction_edit(id):
 
 def main():
     db_session.global_init("db/kursovik.sqlite")
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
 
 
 if __name__ == '__main__':

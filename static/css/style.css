@@ -1,19 +1,26 @@
 td.title {
+    font-family: Comic sans;
+    generic-family: Cursive;
     background-color: "#ffffff";
     align: "center";
     font-size: 14pt;
     padding: 5px;
 }
 td.ordinary {
+    font-family: Comic sans;
+    generic-family: Cursive;
     background-color: "#ffffff";
     align: "center";
     font-size: 14pt;
     padding: 5px;
 }
 BODY {
-  font-family: Georgia;
+  font-family: Comic sans;
+  generic-family: Cursive;
   }
 H1 {
+  font-family: Comic sans;
+  generic-family: Cursive;
   display: inline-block;
   position: relative;
   letter-spacing: .05em;
@@ -28,6 +35,8 @@ H1 {
 }
 
 H1:before {
+  font-family: Comic sans;
+  generic-family: Cursive;
   content: "";
   position: absolute;
   top: 10px;
@@ -38,6 +47,8 @@ H1:before {
 }
 
 H1:after {
+  font-family: Comic sans;
+  generic-family: Cursive;
   content: attr(data-name);
   position: absolute;
   top: 2px;
@@ -61,6 +72,8 @@ H1:hover:before {
 }
 
 H1:hover:after {
+  font-family: Comic sans;
+  generic-family: Cursive;
   color: lemonchiffon;
   text-shadow:
     1px 1px lemonchiffon,
@@ -74,9 +87,13 @@ H1:hover:after {
   }
 }
 h4 {
+    font-family: Comic sans;
+    generic-family: Cursive;
     color: #cccccc;
     padding: 20px;
 }
 p {
+    font-family: Comic sans;
+    generic-family: Cursive;
     font-size: 14pt;
 }
